@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<head>
+  <%- include('partials/head'); %>
+</head>
+<body>
+
+  <%- include('partials/header'); %>
+
+
+  <div class="containeed">
+    <embeddedtitle>How to manage disks in Linux</embeddedtitle>
+    <br>
+<div class="content"><h2 id="initializing-a-linux-data-disk-fdisk">Initializing a Linux Data Disk (fdisk)</h2>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>fdisk<span class="w"> </span>-l
+</code></pre></div>
+
+
+</div>
+
+<h3 id="partitionning-the-disk">Partitionning the disk</h3>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>fdisk<span class="w"> </span>/dev/sdx
+</code></pre></div>
+
+
+</div>
+
+<h3 id="create-a-new-partition">Create a new partition</h3>
+<p>enter :   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>n
+</code></pre></div>
+
+
+</div>
+
+<h3 id="partition-type">Partition type :</h3>
+<p>Primary partition is a bootable partition and it contains the operating system/s of the computer, while extended partition is a partition that is not bootable. Extended partition typically contains multiple logical partitions and it is used to store data.   </p>
+<table>
+<thead>
+<tr>
+<th>Difference</th>
+<th>Primary partition</th>
+<th>Extended partition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantity</td>
+<td>At least 1 and a maximum of 4.</td>
+<td>Cannot use extended partition directly. It is used as a logical partition so that the extended partition consists of several logical partitions.</td>
+</tr>
+<tr>
+<td><strong>Bootable</strong></td>
+<td>The primary partition is bootable, and it contains the operating system/s of the computer.</td>
+<td>The extended partition is a partition that is not bootable.</td>
+</tr>
+<tr>
+<td><strong>Applicable scenarios</strong></td>
+<td>We can use it to boot the operating system, establish one to four primary partitions and install multiple operating systems without interfering.</td>
+<td>Extended partitions do not store files directly but create logical partitions to store general data, audio, pictures, and files.</td>
+</tr>
+<tr>
+<td><strong>Naming example</strong></td>
+<td>Primary partitions are assigned the first letters in the alphabet as drive letters (such as C, D).</td>
+<td>Logical drives in the extended partition get the other letters (such as E, F, G).</td>
+</tr>
+</tbody>
+</table>
+<p>Primary or extended partiti   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>p
+e
+</code></pre></div>
+
+
+</div>
+
+<h3 id="partition-number">Partition number</h3>
+<p>Usually use the default, 1 to 4 for a primary partition   </p>
+<h3 id="first-seco-tory">First seco=tory</h3>
+<p>usually default   </p>
+<h3 id="last-sector">Last sector</h3>
+<p>same   </p>
+<h3 id="verify">Verify</h3>
+<p>Type :    </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>p
+</code></pre></div>
+
+
+</div>
+
+<h3 id="write-changes-to-the-disk">Write changes to the disk</h3>
+<p>enter   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>w
+</code></pre></div>
+
+
+</div>
+
+<p>Run the following command to synchronize the new partition table to the OS:   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>partprobe
+</code></pre></div>
+
+
+</div>
+
+<h2 id="format-the-disk-to-the-correct-file-system-format">Format the disk to the correct file system format</h2>
+<p><strong>mkfs</strong> <strong>-t</strong> <em>File system format</em> <strong>/dev/sdx</strong>   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>mkfs<span class="w"> </span>-t<span class="w"> </span>ext4<span class="w"> </span>/dev/sdx
+</code></pre></div>
+
+
+</div>
+
+<h2 id="mount-the-disk-after-formatting">Mount the disk after formatting</h2>
+<p><strong>mount /dev/vdb1 /mnt/sdc</strong>   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>mount<span class="w"> </span>/dev/sdx<span class="w"> </span>/mnt/dir
+</code></pre></div>
+
+
+</div>
+
+<h2 id="find-the-uuid-for-fstab-provisionning">Find the UUID for fstab provisionning</h2>
+<p><strong>blkid /dev/sdx</strong>   </p>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>blkid<span class="w"> </span>/dev/sdx
+</code></pre></div>
+
+
+</div>
+
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>/dev/sdx:<span class="w"> </span><span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;0b3040e2-1367-4abb-841d-ddb0b92693df&quot;</span><span class="w"> </span><span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;ext4&quot;</span>
+</code></pre></div>
+
+
+</div>
+
+<h2 id="modify-fstab-for-keeping-change-at-boot">Modify fstab for keeping change at boot</h2>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code><span class="nv">UUID</span><span class="o">=</span>0b3040e2-1367-4abb-841d-ddb0b92693df<span class="w"> </span>/mnt/sdc<span class="w">       </span>ext4<span class="w">    </span>defaults<span class="w">        </span><span class="m">0</span><span class="w"> </span><span class="m">2</span>
+</code></pre></div>
+
+
+</div>
+
+<p>The preceding content is used for reference only. Add the information that is used in the environment. The parameters are described as follows:   </p>
+<ul>
+<li>The first column indicates the partition UUID obtained in <a href="https://support.huaweicloud.com/intl/en-us/qs-evs/evs_01_0033.html#evs_01_0033__li840964143216" class="external-link">1</a>.   </li>
+<li>The second column indicates the directory on which the partition is mounted. You can query the mount point using the <strong>df -TH</strong> command.   </li>
+<li>The third column indicates the file system format of the partition. You can query the file system format using the <strong>df -TH</strong> command.   </li>
+<li>The fourth column indicates the partition mount option. Normally, this parameter is set to <strong>defaults</strong>.   </li>
+<li>The fifth column indicates the Linux dump backup option.   <ul>
+<li><strong>0</strong>: Linux dump backup is not used. Normally, dump backup is not used, and you can set this parameter to <strong>0</strong>.   </li>
+<li><strong>1</strong>: Linux dump backup is used.   </li>
+</ul>
+</li>
+<li>The sixth column indicates the fsck option, that is, whether to use fsck to check the attached disk during startup.   <ul>
+<li><strong>0</strong>: not use fsck.   </li>
+<li>
+<p>If the mount point is the root partition (<strong>/</strong>), this parameter must be set to <strong>1</strong>.   </p>
+<p>When this parameter is set to <strong>1</strong> for the root partition, this parameter for other partitions must start with <strong>2</strong> because the system checks the partitions in the ascending order of the values.   </p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="testing-automatic-mount">Testing automatic mount</h2>
+<h4 id="first-unmount-the-disk">First : unmount the disk</h4>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>unmount<span class="w"> </span>/dev/sdx
+</code></pre></div>
+
+
+</div>
+
+<h4 id="second-mount-automatically-using-fstab-file">Second : Mount automatically using fstab file</h4>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>mount<span class="w"> </span>-a
+</code></pre></div>
+
+
+</div>
+
+<h4 id="optionnal-verify-the-thingy">Optionnal : Verify the thingy</h4>
+<div class="lang-bash">
+
+<div class="codehilite"><pre><span></span><code>mount<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/mnt/sdx
+</code></pre></div>
+</div>
+</div>
+</div>
+
+  <%- include('partials/footer'); %>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<head>
+  <%- include('partials/head'); %>
+</head>
+<body>
+
+  <%- include('partials/header'); %>
+
+  <div class="parent">
+    <div class="div1" id="div1zone">
+       <div class="div3">
+          <h2 id="boxlinks" class="black-box">Links</h2>
+          <a  class="link-link" href="https://gitlab.abalzard.com/">
+             <div class="logo-links">
+                <p>
+                   <img src="logo-gitlab.svg" />
+                   https://gitlab.abalzard.com/
+                </p>
+             </div>
+          </a>
+          <a class="link-link" href="https://linkedin.com/in/alexandre-balzard">
+             <div class="logo-links">
+                <p>
+                   <img src="logo-linkedin.svg" />
+                   https://linkedin.com/in/alexandre-balzard
+                </p>
+             </div>
+          </a>
+          <a class="link-link" href="https://github.com/alxblzd">
+             <div class="logo-links">
+                <p>
+                   <img src="logo-github.svg" />
+                   https://github.com/alxblzd
+                </p>
+             </div>
+          </a>
+       </div>
+    </div>
+    <div class="div4" id="div4zone">
+       <h2 class="black-box" id="boxtuto">Last Tutorials</h2>
+       <div class="tutos short">
+          <a href="/tutorials/ansible_cheats">
+             <div class="tuto">Ansible Cheatsheet</div>
+          </a>
+          <a href="/tutorials/linux_disks">
+             <div class="tuto">Linux Disks</div>
+          </a>
+          <a href="#infos">
+             <div class="tuto">THREE</div>
+          </a>
+          <a href="#infos">
+             <div class="tuto">FOUR</div>
+          </a>
+       </div>
+    </div>
+    <div class="div2"  id="div2zone">
+       <div class="div5">
+          <h2 class="black-box" id="boxpro">Latest Projects</h2>
+       </div>
+       <div class="div6">
+        <a href="https://www.google.com">
+          <div class="row">
+             <div class="column left" >
+                   <img src="proxmox_logo.png" />
+                   <h2>Make your Homelab with Proxmox!</h2>
+                   <p>- Hardware</p>
+                   <p>- Network</p>
+                   <p>- Services</p>
+             </div></a>
+
+             <a href="https://www.google.com">
+                <div class="column middle">
+             <img src="pihole_logo.png" />
+             <h2>How to use Raspberry pi for ad-blocking</h2>
+             <p>- Pihole</p>
+             <p>- Dns Explained</p>
+             <p>- Why using it ? </p>
+             </div></a>
+             
+             <a href="https://www.google.com">
+             <div class="column right" >
+             <img src="betaflight_logo.png" />
+             <h2>Build your FPV Quadcopter</h2>
+             <p>- Basics of FPV</p>
+             <p>- Components of a quadcopter</p>
+             </div></a>
+          </div>
+       </div>
+    </div>
+</div>
+
+
+
+  <%- include('partials/footer'); %>
+
+</body>
+</html>
