@@ -15,7 +15,7 @@ Everything is not functionnal however there is still some html css and js that h
 - A parts for making Tutorials, != Wiki pages
 - a Projects sections to describe something more complex than a Tutorial
 - Useful links of others website, sort of resources
-- Pages about me to act as a Portfolio
+- Pages about me, act as a Portfolio
 
 ## What Is available ?
 - Responsive on some pages
@@ -28,9 +28,7 @@ Everything is not functionnal however there is still some html css and js that h
 - a lot of parts of my Website
 - No Projects pages for the moment
 
-The "ansible" and "linux" tutorial come from me previously, I am personnaly using Obsidian https://obsidian.md/ for taking notes daily
+The "Ansible" and "Linux" tutorials were created by me previously. Personally, I use Obsidian (https://obsidian.md/) for taking daily notes.
 
-I wanted to see if I could be able to access my Notes from a webserver, unfortunately, obsidian by default doesnt propose to convert notes into html
-so I found a Python framework that can export my notes into html : 
-https://obsidian-html.github.io/general-information/about-obsidianhtml.html
+I wanted to see if I could access my notes from a web server. Unfortunately, by default, Obsidian doesn't offer the ability to convert notes into HTML. Therefore, I found a Python framework that can export my notes into HTML: https://obsidian-html.github.io/general-information/about-obsidianhtml.html
 
