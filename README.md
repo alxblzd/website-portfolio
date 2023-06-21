@@ -54,5 +54,5 @@ sudo docker build . -t alxblzd/website-portfolio
 
 Run the docker image and expose port 8080 locally:
 ```bash
-sudo docker run -p 8080:3000 -d alxblzd/website-porfolio
+sudo docker run -p 8081:3000 -d alxblzd/website-portfolio
 ```
