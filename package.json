@@ -4,14 +4,15 @@
     "express": "^4.18.2",
     "serve-favicon": "^2.5.0"
   },
-  "name": "website",
+  "name": "website-portfolio",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alexandre Balzard",
   "license": "ISC",
-  "description": ""
+  "description": "basic website portfolio, markdown wiki"
 }
