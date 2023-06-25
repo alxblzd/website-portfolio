@@ -5,14 +5,24 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nodejs-alex:latest
-    - name: Run Docker container
-      run: docker run -d  -p 8081:3000/tcp nodejs-alex:latest
+      - uses: actions/checkout@v3
+
+      - name: Stop and remove previous container
+        run: |
+          PREVIOUS_CONTAINER=$(docker ps -aqf "ancestor=nodejs-alex:latest")
+          if [ -n "$PREVIOUS_CONTAINER" ]; then
+            docker stop "$PREVIOUS_CONTAINER"
+            docker rm "$PREVIOUS_CONTAINER"
+          fi
+
+      - name: Build and tag the new Docker image
+        run: |
+          docker build . --file Dockerfile --tag nodejs-alex:new
+          docker tag nodejs-alex:new nodejs-alex:latest
+
+      - name: Run Docker container
+        run: docker run -d -p 8081:3000/tcp nodejs-alex:latest
