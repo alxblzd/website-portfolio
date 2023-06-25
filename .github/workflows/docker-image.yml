@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag nodejs-alex:$(date +%s)
+      run: docker build . --file Dockerfile --tag nodejs-alex:latest
     - name: Run Docker container
       run: docker run -d  -p 8081:3000/tcp nodejs-alex:latest
