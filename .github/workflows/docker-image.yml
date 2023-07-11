@@ -25,4 +25,4 @@ jobs:
           docker tag nodejs-alex:new nodejs-alex:latest
 
       - name: Run Docker container
-        run: docker run -d -p 8081:3000/tcp nodejs-alex:latest
+        run: docker run --restart=on-failure:5 -d -p 8081:3000/tcp nodejs-alex:latest
