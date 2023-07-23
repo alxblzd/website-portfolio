@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  alexwebsite:
+    image: nodejs-alex:latest
+    container_name: alexwebsite
+    restart: on-failure:5
+    networks:
+      - traefik_web
+    labels:
+      traefik.enable: true
+      traefik.docker.network: traefik_web
+      traefik.http.routers.alexweb.entrypoints: websecure
+      traefik.http.routers.alexweb.rule: Host(`alex.ezshaping.pw`)
+      traefik.http.services.alexweb.loadbalancer.server.port: 80
+
+networks:
+  traefik_web:
+    external: true
