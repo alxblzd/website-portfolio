@@ -26,3 +26,5 @@ jobs:
 
       - name: Run Docker container
         uses: isbang/compose-action@v1.5.0
+        with:
+          down-flags: "--volumes"
