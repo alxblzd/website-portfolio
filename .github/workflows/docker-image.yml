@@ -25,5 +25,4 @@ jobs:
           docker tag nodejs-alex:new nodejs-alex:latest
 
       - name: Run Docker container
-        run: | 
-          docker compose up -d
+        uses: isbang/compose-action@v1.5.0
