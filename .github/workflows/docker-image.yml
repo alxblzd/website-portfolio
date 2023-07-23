@@ -25,4 +25,4 @@ jobs:
           docker tag nodejs-alex:new nodejs-alex:latest
 
       - name: Run Docker container
-        run: docker run --name alexwebsite --restart=on-failure:5 -d  nodejs-alex:latest --network="traefik_web" --label traefik.enable=true --label traefik.docker.network=treafik_web --label traefik.http.routers.alexweb.entrypoints=websecure --label traefik.http.routers.alexweb.rule=Host\(\`alex.ezshaping.pw\`\) --label traefik.http.services.alexweb.loadbalancer.server.port=80
+        run: docker compose up -d
