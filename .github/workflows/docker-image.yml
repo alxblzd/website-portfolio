@@ -25,4 +25,5 @@ jobs:
           docker tag nodejs-alex:new nodejs-alex:latest
 
       - name: Run Docker container
-        run: docker compose up -d
+        run: | 
+          docker compose up -d
