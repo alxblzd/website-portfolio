@@ -651,7 +651,7 @@ h1:not(:first-of-type) {
 }
 
 h2 {
-    font-size: 11pt;
+    font-size: 17pt;
     border-bottom: 1px dotted #777070;
     font-weight: 600;
     padding-bottom: 0.2rem;
