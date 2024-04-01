@@ -7,11 +7,14 @@ services:
     networks:
       - traefik_web
     labels:
-      traefik.enable: true
-      traefik.docker.network: traefik_web
-      traefik.http.routers.alexweb.entrypoints: websecure
-      traefik.http.routers.alexweb.rule: Host(`alex.webguardx.com`)
-      traefik.http.services.alexweb.loadbalancer.server.port: 3000
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_web"
+      - "traefik.http.routers.alex.rule=Host(`alex.webguardx.com`)"
+      - "traefik.http.routers.alex.entrypoints=websecure"
+      - "traefik.http.routers.alex.tls.certresolver=myresolver"      
+      - "traefik.http.routers.alex.tls=true"
+      - "traefik.http.routers.alex.middlewares=default@file"
+      - "traefik.http.services.alex.loadbalancer.server.port=3000"
 
 networks:
   traefik_web:
