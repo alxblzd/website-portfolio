@@ -10,7 +10,7 @@ services:
       traefik.enable: true
       traefik.docker.network: traefik_web
       traefik.http.routers.alexweb.entrypoints: websecure
-      traefik.http.routers.alexweb.rule: Host(`alex.ezshaping.pw`)
+      traefik.http.routers.alexweb.rule: Host(`alex.webguardx.com`)
       traefik.http.services.alexweb.loadbalancer.server.port: 3000
 
 networks:
